@@ -31,7 +31,11 @@ class AppearanceProvider: AppearanceProviderProtocol {
       return UIColor(red: 246.0/255.0, green: 124.0/255.0, blue: 95.0/255.0, alpha: 1.0)
     case 64:
       return UIColor(red: 246.0/255.0, green: 94.0/255.0, blue: 59.0/255.0, alpha: 1.0)
-    case 128, 256, 512, 1024, 2048:
+    case 128:
+      return UIColor(red: 247.0/255.0, green: 80.0/255.0, blue: 50.0/255.0, alpha: 1.0)
+    case 256:
+       return UIColor(red: 247.0/255.0, green: 75.0/255.0, blue: 40.0/255.0, alpha: 1.0)
+    case 512, 1024, 2048:
       return UIColor(red: 237.0/255.0, green: 207.0/255.0, blue: 114.0/255.0, alpha: 1.0)
     default:
       return UIColor.whiteColor()
@@ -50,7 +54,7 @@ class AppearanceProvider: AppearanceProviderProtocol {
 
   // Provide the font to be used on the number tiles
   func fontForNumbers() -> UIFont {
-    if let font = UIFont(name: "HelveticaNeue-Bold", size: 20) {
+    if let font = UIFont(name: "HelveticaNeue-Bold", size: 25) {
       return font
     }
     return UIFont.systemFontOfSize(20)

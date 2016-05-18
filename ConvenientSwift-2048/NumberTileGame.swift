@@ -24,7 +24,7 @@ class NumberTileGameViewController : UIViewController, GameModelProtocol {
   var scoreView: ScoreViewProtocol?
 
   // Width of the gameboard
-  let boardWidth: CGFloat = 230.0
+  let boardWidth: CGFloat = UIScreen.mainScreen().bounds.width - 60
   // How much padding to place between the tiles
   let thinPadding: CGFloat = 3.0
   let thickPadding: CGFloat = 6.0
@@ -91,19 +91,19 @@ class NumberTileGameViewController : UIViewController, GameModelProtocol {
     let vcHeight = view.frame.size.height
     let vcWidth = view.frame.size.width
 
-    // This nested function provides the x-position for a component view
+    // 横向的距离
     func xPositionToCenterView(v: UIView) -> CGFloat {
       let viewWidth = v.frame.size.width
       let tentativeX = 0.5*(vcWidth - viewWidth)
       return tentativeX >= 0 ? tentativeX : 0
     }
-    // This nested function provides the y-position for a component view
+    // 纵向的距离
     func yPositionForViewAtPosition(order: Int, views: [UIView]) -> CGFloat {
       assert(views.count > 0)
       assert(order >= 0 && order < views.count)
 //      let viewHeight = views[order].bounds.size.height
       let totalHeight = CGFloat(views.count - 1)*viewPadding + views.map({ $0.frame.size.height }).reduce(verticalViewOffset, combine: { $0 + $1 })
-      let viewsTop = 0.5*(vcHeight - totalHeight) >= 0 ? 0.5*(vcHeight - totalHeight) : 0
+      let viewsTop = 0.6*(vcHeight - totalHeight) >= 0 ? 0.6*(vcHeight - totalHeight) : 0
 
       // Not sure how to slice an array yet
       var acc: CGFloat = 0
@@ -114,9 +114,9 @@ class NumberTileGameViewController : UIViewController, GameModelProtocol {
     }
 
     // Create the score view
-    let scoreView = ScoreView(backgroundColor: UIColor.blackColor(),
+    let scoreView = ScoreView(backgroundColor:UIColor(red: 237.0/255.0, green: 224.0/255.0, blue: 200.0/255.0, alpha: 1.0),
       textColor: UIColor.whiteColor(),
-      font: UIFont(name: "HelveticaNeue-Bold", size: 16.0) ?? UIFont.systemFontOfSize(16.0),
+      font: UIFont(name: "HelveticaNeue-Bold", size: 20.0) ?? UIFont.systemFontOfSize(20.0),
       radius: 6)
     scoreView.score = 0
 
@@ -128,14 +128,14 @@ class NumberTileGameViewController : UIViewController, GameModelProtocol {
       tileWidth: width,
       tilePadding: padding,
       cornerRadius: 6,
-      backgroundColor: UIColor.blackColor(),
-      foregroundColor: UIColor.darkGrayColor())
+      backgroundColor: UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 245.0/255.0, alpha: 1.0),
+      foregroundColor: UIColor(red: 220/255.0, green: 220/255.0, blue: 220/255.0, alpha: 1.0))
 
     // Set up the frames
     let views = [scoreView, gameboard]
 
     var f = scoreView.frame
-    f.origin.x = xPositionToCenterView(scoreView)
+    f.origin.x = 30
     f.origin.y = yPositionForViewAtPosition(0, views: views)
     scoreView.frame = f
 
@@ -165,9 +165,9 @@ class NumberTileGameViewController : UIViewController, GameModelProtocol {
     if userWon {
       // TODO: alert delegate we won
       let alertView = UIAlertView()
-      alertView.title = "Victory"
-      alertView.message = "You won!"
-      alertView.addButtonWithTitle("Cancel")
+      alertView.title = "胜利"
+      alertView.message = "你赢了！"
+      alertView.addButtonWithTitle("取消")
       alertView.show()
       // TODO: At this point we should stall the game until the user taps 'New Game' (which hasn't been implemented yet)
       return
@@ -180,11 +180,10 @@ class NumberTileGameViewController : UIViewController, GameModelProtocol {
     // At this point, the user may lose
     if m.userHasLost() {
       // TODO: alert delegate we lost
-      NSLog("You lost...")
       let alertView = UIAlertView()
-      alertView.title = "Defeat"
-      alertView.message = "You lost..."
-      alertView.addButtonWithTitle("Cancel")
+      alertView.title = "失败"
+      alertView.message = "你输了..."
+      alertView.addButtonWithTitle("取消")
       alertView.show()
     }
   }
