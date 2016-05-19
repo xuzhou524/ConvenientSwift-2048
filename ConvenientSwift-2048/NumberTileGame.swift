@@ -7,12 +7,12 @@
 //
 
 import UIKit
-
+import GoogleMobileAds
 /// A view controller representing the swift-2048 game. It serves mostly to tie a GameModel and a GameboardView
 /// together. Data flow works as follows: user input reaches the view controller and is forwarded to the model. Move
 /// orders calculated by the model are returned to the view controller and forwarded to the gameboard view, which
 /// performs any animations to update its state.
-class NumberTileGameViewController : UIViewController, GameModelProtocol {
+class NumberTileGameViewController : UIViewController, GameModelProtocol,GADBannerViewDelegate {
   // How many tiles in both directions the gameboard contains
   var dimension: Int
   // The value of the winning tile
@@ -20,7 +20,7 @@ class NumberTileGameViewController : UIViewController, GameModelProtocol {
 
   var board: GameboardView?
   var model: GameModel?
-
+  var bannerImageView: GADBannerView!
   var scoreView: ScoreViewProtocol?
 
   // Width of the gameboard
@@ -88,6 +88,15 @@ class NumberTileGameViewController : UIViewController, GameModelProtocol {
   }
 
   func setupGame() {
+    
+    self.bannerImageView = GADBannerView.init(frame: CGRectMake(0, 24, view.frame.size.width, 60))
+    self.bannerImageView.backgroundColor = UIColor.whiteColor()
+    self.view.addSubview(self.bannerImageView)
+    self.bannerImageView.delegate = self
+    self.bannerImageView.adUnitID = "ca-app-pub-3469552292226288/9081240452";
+    self.bannerImageView.rootViewController = self
+    self.bannerImageView.loadRequest(GADRequest())
+    
     let vcHeight = view.frame.size.height
     let vcWidth = view.frame.size.width
 
