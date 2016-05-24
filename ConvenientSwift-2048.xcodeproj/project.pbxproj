@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53215D051CF4311000A7EB62 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53215CFD1CF4311000A7EB62 /* GoogleMobileAds.framework */; };
 		53F9A5931CEB120F003E1CBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F9A5921CEB120F003E1CBB /* AppDelegate.swift */; };
 		53F9A5951CEB120F003E1CBB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F9A5941CEB120F003E1CBB /* ViewController.swift */; };
 		53F9A5981CEB120F003E1CBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53F9A5961CEB120F003E1CBB /* Main.storyboard */; };
@@ -22,6 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		53215CFD1CF4311000A7EB62 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		53215CFF1CF4311000A7EB62 /* GADMAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
+		53215D001CF4311000A7EB62 /* GADMAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
+		53215D011CF4311000A7EB62 /* GADMediationAdRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMediationAdRequest.h; sourceTree = "<group>"; };
+		53215D021CF4311000A7EB62 /* GADMEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMEnums.h; sourceTree = "<group>"; };
+		53215D031CF4311000A7EB62 /* GADMRewardBasedVideoAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
+		53215D041CF4311000A7EB62 /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
 		53F9A58F1CEB120F003E1CBB /* ConvenientSwift-2048.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ConvenientSwift-2048.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F9A5921CEB120F003E1CBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53F9A5941CEB120F003E1CBB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,12 +51,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53215D051CF4311000A7EB62 /* GoogleMobileAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		53215CFC1CF4311000A7EB62 /* GoogleMobileAdsSdkiOS-7.8.1 */ = {
+			isa = PBXGroup;
+			children = (
+				53215CFD1CF4311000A7EB62 /* GoogleMobileAds.framework */,
+				53215CFE1CF4311000A7EB62 /* Mediation Adapters */,
+			);
+			path = "GoogleMobileAdsSdkiOS-7.8.1";
+			sourceTree = "<group>";
+		};
+		53215CFE1CF4311000A7EB62 /* Mediation Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				53215CFF1CF4311000A7EB62 /* GADMAdNetworkAdapterProtocol.h */,
+				53215D001CF4311000A7EB62 /* GADMAdNetworkConnectorProtocol.h */,
+				53215D011CF4311000A7EB62 /* GADMediationAdRequest.h */,
+				53215D021CF4311000A7EB62 /* GADMEnums.h */,
+				53215D031CF4311000A7EB62 /* GADMRewardBasedVideoAdNetworkAdapterProtocol.h */,
+				53215D041CF4311000A7EB62 /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */,
+			);
+			path = "Mediation Adapters";
+			sourceTree = "<group>";
+		};
 		53F9A5861CEB120F003E1CBB = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +99,7 @@
 		53F9A5911CEB120F003E1CBB /* ConvenientSwift-2048 */ = {
 			isa = PBXGroup;
 			children = (
+				53215CFC1CF4311000A7EB62 /* GoogleMobileAdsSdkiOS-7.8.1 */,
 				53F9A5CB1CEB12F0003E1CBB /* Models */,
 				53F9A5C41CEB12EA003E1CBB /* Views */,
 				53F9A5C01CEB12E4003E1CBB /* AppearanceProvider.swift */,
@@ -293,6 +325,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ConvenientSwift-2048/GoogleMobileAdsSdkiOS-7.8.1",
+				);
 				INFOPLIST_FILE = "ConvenientSwift-2048/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -305,6 +341,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ConvenientSwift-2048/GoogleMobileAdsSdkiOS-7.8.1",
+				);
 				INFOPLIST_FILE = "ConvenientSwift-2048/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
