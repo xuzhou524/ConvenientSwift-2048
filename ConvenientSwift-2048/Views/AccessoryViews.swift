@@ -20,7 +20,7 @@ class ScoreView : UIView, ScoreViewProtocol {
         }
     }
     
-    let defaultFrame = CGRect(x: 5, y: 0, width: 100, height: 100)
+    let defaultFrame = CGRect(x: 0, y: 0, width: 100, height: 100)
     var label: UILabel
     
     init(backgroundColor bgcolor: UIColor, textColor tcolor: UIColor, font: UIFont, radius r: CGFloat) {

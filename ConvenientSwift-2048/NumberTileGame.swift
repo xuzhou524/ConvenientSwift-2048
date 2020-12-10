@@ -23,6 +23,8 @@ class NumberTileGameViewController : UIViewController, GameModelProtocol {
     
     var scoreView: ScoreViewProtocol?
     
+    var highestScore:ScoreView?
+    
     // Width of the gameboard
     let boardWidth: CGFloat = UIScreen.main.bounds.width - 60
     // How much padding to place between the tiles
@@ -155,6 +157,23 @@ class NumberTileGameViewController : UIViewController, GameModelProtocol {
         let m = model!
         m.insertTileAtRandomLocation(value: 2)
         m.insertTileAtRandomLocation(value: 2)
+        
+        
+        highestScore = ScoreView(backgroundColor:UIColor(red: 237.0/255.0, green: 224.0/255.0, blue: 200.0/255.0, alpha: 1.0),
+                                 textColor: UIColor.white,
+                                 font: UIFont(name: "HelveticaNeue-Bold", size: 20.0) ?? UIFont.systemFont(ofSize: 20.0),
+                                 radius: 6)
+        highestScore?.frame = CGRect(x: 30, y: 180, width: 100, height: 100)
+        highestScore?.label.text = "最高得分\n1024"
+        view.addSubview(highestScore!)
+        
+        scoreView.frame = CGRect(x: 130 + 15, y: 180, width: 100, height: 100)
+        
+        let label = UILabel(frame: CGRect(x: 30, y: 80, width: 150, height: 50))
+        label.font = UIFont.systemFont(ofSize: 50)
+        label.textColor = UIColor(red: 51/255.0, green: 51/255.0, blue: 51/255.0, alpha: 1.0)
+        label.text = "2048"
+        view.addSubview(label)
     }
     
     // Misc
