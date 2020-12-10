@@ -16,16 +16,17 @@ protocol ScoreViewProtocol {
 class ScoreView : UIView, ScoreViewProtocol {
     var score : Int = 0 {
         didSet {
-            label.text = "得分: \(score)"
+            label.text = "得分\n\(score)"
         }
     }
     
-    let defaultFrame = CGRect(x: 5, y: 0, width: 140, height: 50)
+    let defaultFrame = CGRect(x: 5, y: 0, width: 100, height: 100)
     var label: UILabel
     
     init(backgroundColor bgcolor: UIColor, textColor tcolor: UIColor, font: UIFont, radius r: CGFloat) {
         label = UILabel(frame: defaultFrame)
-        label.textAlignment = NSTextAlignment.left
+        label.textAlignment = NSTextAlignment.center
+        label.numberOfLines = 2
         super.init(frame: defaultFrame)
         backgroundColor = bgcolor
         label.textColor = tcolor
@@ -45,6 +46,6 @@ class ScoreView : UIView, ScoreViewProtocol {
 
 // A simple view that displays several buttons for controlling the app
 class ControlView {
-    let defaultFrame = CGRect(x: 0, y: 0, width: 140, height: 50)
+    let defaultFrame = CGRect(x: 0, y: 0, width: 100, height: 100)
     // TODO: Implement me
 }
