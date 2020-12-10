@@ -68,7 +68,9 @@ struct SquareGameboard<T> {
 
   init(dimension d: Int, initialValue: T) {
     dimension = d
-    boardArray = [T](count:d*d, repeatedValue:initialValue)
+    
+    boardArray = [T].init(repeating: initialValue, count: d*d)
+    
   }
 
   subscript(row: Int, col: Int) -> T {

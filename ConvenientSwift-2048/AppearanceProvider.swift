@@ -38,7 +38,7 @@ class AppearanceProvider: AppearanceProviderProtocol {
     case 512, 1024, 2048:
       return UIColor(red: 237.0/255.0, green: 207.0/255.0, blue: 114.0/255.0, alpha: 1.0)
     default:
-      return UIColor.whiteColor()
+        return UIColor.white
     }
   }
 
@@ -48,7 +48,7 @@ class AppearanceProvider: AppearanceProviderProtocol {
     case 2, 4:
       return UIColor(red: 119.0/255.0, green: 110.0/255.0, blue: 101.0/255.0, alpha: 1.0)
     default:
-      return UIColor.whiteColor()
+        return UIColor.white
     }
   }
 
@@ -57,6 +57,6 @@ class AppearanceProvider: AppearanceProviderProtocol {
     if let font = UIFont(name: "HelveticaNeue-Bold", size: 25) {
       return font
     }
-    return UIFont.systemFontOfSize(20)
+    return UIFont.systemFont(ofSize: 20)
   }
 }
